@@ -19,57 +19,57 @@ First, obtain your API key from the dashboard for any of the service provider yo
 Note: In order to gain the TypeScript typings (for intellisense / autocomplete) while using CommonJS, use require().default as seen below:
 
 ```js
-const TransactionalEmail = require("./").default;
+const TransactionalEmail = require("@calculusky/transactional-email").default;
 ```
 
 ### Examples
 
 **CommonJS Usage**
 
-> In order to gain the TypeScript typings (for intellisense / autocomplete) while using CommonJS imports with require() use the following approach:
->
-> ```js
-> const TransactionalEmail = require("./").default;
->
-> const sendgridMail = new TransactionalEmail({
->     apiKey: "YOUR API KEY",
->     provider: "YOUR PROVIDER", //sendinblue or sendgrid
->     from: { email: "info@example.com", name: "Info" }, // optional (default value for the sender). You can set or overwrite it in the send() method options
-> });
->
-> //sendgrid message options
-> const message = {
->     to: "test@example.com",
->     from: "test@example.com", // Use the email address or domain you verified
->     subject: "Sending with Sendgrid Provider",
->     text: "This is just a test mail",
->     html: "<strong>This is just a test mail</strong>",
-> };
->
-> //ES6
-> email.send(message).then(
->     () => {},
->     (error) => {
->         console.error(error);
->
->         if (error.response) {
->             console.error(error.response.data);
->         }
->     }
-> );
-> //ES8
-> (async () => {
->     try {
->         await email.send(message);
->     } catch (error) {
->         console.error(error);
->
->         if (error.response) {
->             console.error(error.response.data);
->         }
->     }
-> })();
-> ```
+In order to gain the TypeScript typings (for intellisense / autocomplete) while using CommonJS imports with require() use the following approach:
+
+```js
+const TransactionalEmail = require("@calculusky/transactional-email").default;
+
+const sendgridMail = new TransactionalEmail({
+    apiKey: "YOUR API KEY",
+    provider: "YOUR PROVIDER", //sendinblue or sendgrid
+    from: { email: "info@example.com", name: "Info" }, // optional (default value for the sender). You can set or overwrite it in the send() method options
+});
+
+//sendgrid message options
+const message = {
+    to: "test@example.com",
+    from: "test@example.com", // Use the email address or domain you verified
+    subject: "Sending with Sendgrid Provider",
+    text: "This is just a test mail",
+    html: "<strong>This is just a test mail</strong>",
+};
+
+//ES6
+email.send(message).then(
+    () => {},
+    (error) => {
+        console.error(error);
+
+        if (error.response) {
+            console.error(error.response.data);
+        }
+    }
+);
+//ES8
+(async () => {
+    try {
+        await email.send(message);
+    } catch (error) {
+        console.error(error);
+
+        if (error.response) {
+            console.error(error.response.data);
+        }
+    }
+})();
+```
 
 **TypeScript Usage**
 
