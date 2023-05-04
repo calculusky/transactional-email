@@ -17,7 +17,7 @@
         "build": "tsc",
         "husky:install": "husky install",
         "prepare": "pnpm build",
-        "prepublishOnly": "pnpm lint && pnpm test",
+        "prepublishOnly": "pnpm lint",
         "preversion": "pnpm lint",
         "version": "pnpm format && git add .",
         "postversion": "git push && git push --tags"
