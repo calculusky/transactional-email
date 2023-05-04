@@ -75,8 +75,8 @@ const TransactionalEmail = require("./").default;
 
 ```ts
 import TransactionalEmail, {
-    Sendgrid,
-    Sendinblue,
+    SendinblueOptions
+    SendgridOptions,
 } from "@calculusky/transactional-email";
 
 const email = new TransactionalEmail({
@@ -86,7 +86,7 @@ const email = new TransactionalEmail({
 });
 
 //sendgrid message options
-const message: Sendgrid.SendgridOptions = {
+const message: SendgridOptions = {
     to: "john@example.com",
     from: "info@example.com", // Use the email address or domain you verified
     subject: "Sending with Sendgrid Provider",
@@ -95,7 +95,7 @@ const message: Sendgrid.SendgridOptions = {
 };
 
 //sendinblue message options
-// const message: Sendinblue.SendinblueOptions = {
+// const message: SendinblueOptions = {
 //     sender: { email: "info@example.com", name: "John Doe" },
 //     to: [{ email: "john@example.com", name: "John Smith" }],
 //     subject: "Sending with Sendinblue Provider",
