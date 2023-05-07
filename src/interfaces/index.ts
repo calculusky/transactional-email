@@ -26,3 +26,5 @@ export type SendEmailOptions<T> = T extends SendgridProvider
 export interface ErrorResponse {
     [key: string]: any;
 }
+
+export type Optional<T, Key extends keyof T> = Omit<T, Key> & Partial<T>;

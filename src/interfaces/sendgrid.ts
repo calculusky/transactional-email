@@ -1,3 +1,4 @@
 import { MailDataRequired } from "@sendgrid/mail";
+import { Optional } from ".";
 
-export type SendgridOptions = MailDataRequired;
+export type SendgridOptions = Optional<MailDataRequired, "from">;

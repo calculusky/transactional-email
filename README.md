@@ -16,31 +16,25 @@ yarn add @calculusky/transactional-email
 
 First, obtain your API key from the dashboard for any of the service provider you would want to use.
 
+#### Examples
+
+**CommonJS Usage**
+
 Note: In order to gain the TypeScript typings (for intellisense / autocomplete) while using CommonJS, use require().default as seen below:
 
 ```js
 const TransactionalEmail = require("@calculusky/transactional-email").default;
-```
 
-### Examples
-
-**CommonJS Usage**
-
-In order to gain the TypeScript typings (for intellisense / autocomplete) while using CommonJS imports with require() use the following approach:
-
-```js
-const TransactionalEmail = require("@calculusky/transactional-email").default;
-
-const sendgridMail = new TransactionalEmail({
+const email = new TransactionalEmail({
     apiKey: "YOUR API KEY",
     provider: "YOUR PROVIDER", //sendinblue or sendgrid
-    from: { email: "info@example.com", name: "Info" }, // optional (default value for the sender). You can set or overwrite it in the send() method options
+    from: { email: "info@example.com", name: "John Doe" }, // optional (default value for the sender). You can set or overwrite it in the send() method options
 });
 
 //sendgrid message options
 const message = {
-    to: "test@example.com",
-    from: "test@example.com", // Use the email address or domain you verified
+    to: "receiver@example2.com",
+    from: "info@example.com", // Use the email address or domain you verified
     subject: "Sending with Sendgrid Provider",
     text: "This is just a test mail",
     html: "<strong>This is just a test mail</strong>",
@@ -82,12 +76,12 @@ import TransactionalEmail, {
 const email = new TransactionalEmail({
     apiKey: "YOUR API KEY",
     provider: "YOUR PROVIDER", //sendinblue or sendgrid
-    from: { email: "info@example.com", name: "Info" }, // optional (default value for the sender). You can set or overwrite it in the send() method options
+    from: { email: "info@example.com", name: "John Doe" }, // optional (default value for the sender). You can set or overwrite it in the send() method options
 });
 
 //sendgrid message options
 const message: SendgridOptions = {
-    to: "john@example.com",
+    to: "receiver@example2.com",
     from: "info@example.com", // Use the email address or domain you verified
     subject: "Sending with Sendgrid Provider",
     text: "This is just a test mail",
@@ -97,7 +91,7 @@ const message: SendgridOptions = {
 //sendinblue message options
 // const message: SendinblueOptions = {
 //     sender: { email: "info@example.com", name: "John Doe" },
-//     to: [{ email: "john@example.com", name: "John Smith" }],
+//     to: [{ email: "receiver@example2.com", name: "John Smith" }],
 //     subject: "Sending with Sendinblue Provider",
 //     textContent: "This is just a test mail",
 //     htmlContent: "<strong>This is just a test mail</strong>",
@@ -128,4 +122,7 @@ email.send(message).then(
 })();
 ```
 
-**Note:** Message options vary for different providers. Please checkout the option interface for each provider. For more details, visit their official platforms for transactional message options.
+**Note:** Message options vary for different providers. Please checkout the option interface for each provider. For more details, you can visit their official platforms for transactional message options. Below are the links:
+
+-   [Sendgrid](https://docs.sendgrid.com/api-reference/mail-send/mail-send#body)
+-   [Sendinblue](https://developers.brevo.com/reference/sendtransacemail)

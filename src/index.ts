@@ -53,9 +53,7 @@ export default class TransactionalEmail<Provider extends EmailProviders> {
     ) {
         try {
             sendgridMail.setApiKey(this.emailOptions.apiKey);
-            sendgridMail.setSubstitutionWrappers("{{", "}}");
-
-            const message: SendgridOptions = {
+            const message: sendgridMail.MailDataRequired = {
                 from: options.from ?? this.emailOptions.from,
                 to: options.to,
                 subject: options.subject,
@@ -105,7 +103,7 @@ export default class TransactionalEmail<Provider extends EmailProviders> {
             to: options.to,
         };
 
-        const requestOptions: AxiosRequestConfig<any> = {
+        const requestOptions: AxiosRequestConfig<SendinblueOptions> = {
             baseURL: Uri.SENDINBLUE_BASE_URL,
             headers: {
                 "Content-Type": "application/json",
@@ -116,7 +114,9 @@ export default class TransactionalEmail<Provider extends EmailProviders> {
             data: message,
         };
         try {
-            const { data } = await this.axios(requestOptions);
+            const { data } = await this.axios<{ messageId: string }>(
+                requestOptions
+            );
             return data;
         } catch (error) {
             if (!Axios.isAxiosError(error)) {
