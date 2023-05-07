@@ -1,6 +1,6 @@
 {
     "name": "@calculusky/transactional-email",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Send transactional emails using any of the popular email providers: sendgrid, sendinblue with a single wrapper",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
